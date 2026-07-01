@@ -108,14 +108,14 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center"><span className="text-white font-display text-lg">S</span></div>
               <span className="font-display text-xl text-white">{APP_NAME}</span>
             </div>
-            <p className="text-sm text-surface-400 max-w-sm leading-relaxed">Bilim almashish platformasi — o'rgatish va o'rganishni xohlovchilarni bog'laydi.</p>
+            <p className="text-sm text-surface-400 max-w-sm leading-relaxed">Bilim almashish platformasi — o&apos;rgatish va o&apos;rganishni xohlovchilarni bog&apos;laydi.</p>
           </div>
           <div>
             <h4 className="font-display text-white mb-4">Platforma</h4>
             <div className="space-y-2">
               <Link href={ROUTES.search} className="block text-sm hover:text-white transition-colors">Qidiruv</Link>
               <Link href={ROUTES.matching} className="block text-sm hover:text-white transition-colors">Moslash</Link>
-              <Link href={ROUTES.register} className="block text-sm hover:text-white transition-colors">Ro'yxatdan o'tish</Link>
+              <Link href={ROUTES.register} className="block text-sm hover:text-white transition-colors">Ro&apos;yxatdan o&apos;tish</Link>
             </div>
           </div>
           <div>
@@ -125,7 +125,7 @@ export function Footer() {
         </div>
         <div className="border-t border-surface-800 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-surface-500">&copy; {new Date().getFullYear()} {APP_NAME}. Barcha huquqlar himoyalangan.</p>
-          <p className="text-xs text-surface-500">O'zbekistonda yaratilgan</p>
+          <p className="text-xs text-surface-500">O&apos;zbekistonda yaratilgan</p>
         </div>
       </div>
     </footer>
@@ -152,7 +152,7 @@ export function AuthLayout({ children }: { children: ReactNode }) {
         <div className="relative text-center p-12">
           <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mx-auto mb-8"><span className="text-white font-display text-3xl">S</span></div>
           <h2 className="font-display text-4xl text-white mb-4">Bilim almashish platformasi</h2>
-          <p className="text-primary-200 max-w-sm mx-auto">O'rgatish va o'rganishni xohlovchilarni bog'laydigan zamonaviy platforma.</p>
+          <p className="text-primary-200 max-w-sm mx-auto">O&apos;rgatish va o&apos;rganishni xohlovchilarni bog&apos;laydigan zamonaviy platforma.</p>
         </div>
       </div>
       <div className="flex-1 flex items-center justify-center p-8 bg-surface-50">
@@ -171,12 +171,10 @@ export function AuthLayout({ children }: { children: ReactNode }) {
 }
 
 /* =================== ADMIN LAYOUT =================== */
-export function AdminLayout({ children }: { children: ReactNode }) {
+export function AdminPanelLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const admin = mockUsers.find((u) => u.role === 'admin')!
-
-  if (pathname === '/admin/login') return <><children /><ToastContainer /></>
 
   const navItems = [
     { href: '/admin/dashboard', label: 'Boshqaruv paneli', icon: LayoutDashboard },
