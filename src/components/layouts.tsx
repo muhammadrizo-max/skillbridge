@@ -100,32 +100,36 @@ export function Navbar() {
 /* =================== FOOTER =================== */
 export function Footer() {
   return (
-    <footer className="bg-surface-900 text-surface-300">
-      <div className="page-container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center"><span className="text-white font-display text-lg">S</span></div>
-              <span className="font-display text-xl text-white">{APP_NAME}</span>
+    <footer className="bg-surface-900 text-surface-300 border-t border-surface-800">
+      <div className="page-container py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-7 h-7 rounded-md bg-primary-500 flex items-center justify-center"><span className="text-white font-display text-sm">S</span></div>
+              <span className="font-display text-lg text-white">{APP_NAME}</span>
             </div>
-            <p className="text-sm text-surface-400 max-w-sm leading-relaxed">Bilim almashish platformasi — o&apos;rgatish va o&apos;rganishni xohlovchilarni bog&apos;laydi.</p>
+            <p className="text-xs text-surface-400 leading-relaxed">Bilim almashish platformasi.<br />O'rgatish va o'rganishni xohlovchilarni bog'laydi.</p>
           </div>
           <div>
-            <h4 className="font-display text-white mb-4">Platforma</h4>
-            <div className="space-y-2">
-              <Link href={ROUTES.search} className="block text-sm hover:text-white transition-colors">Qidiruv</Link>
-              <Link href={ROUTES.matching} className="block text-sm hover:text-white transition-colors">Moslash</Link>
-              <Link href={ROUTES.register} className="block text-sm hover:text-white transition-colors">Ro&apos;yxatdan o&apos;tish</Link>
+            <h4 className="text-xs font-semibold text-surface-300 uppercase tracking-wider mb-3">Platforma</h4>
+            <div className="flex flex-col gap-2">
+              <Link href={ROUTES.search} className="text-xs text-surface-400 hover:text-white transition-colors">Qidiruv</Link>
+              <Link href={ROUTES.matching} className="text-xs text-surface-400 hover:text-white transition-colors">Moslash</Link>
+              <Link href={ROUTES.register} className="text-xs text-surface-400 hover:text-white transition-colors">Ro&apos;yxatdan o&apos;tish</Link>
             </div>
           </div>
           <div>
-            <h4 className="font-display text-white mb-4">Yordam</h4>
-            <div className="space-y-2"><span className="block text-sm text-surface-500">FAQ (Tez orada)</span><span className="block text-sm text-surface-500">Maxfiylik siyosati</span><span className="block text-sm text-surface-500">Foydalanish shartlari</span></div>
+            <h4 className="text-xs font-semibold text-surface-300 uppercase tracking-wider mb-3">Yordam</h4>
+            <div className="flex flex-col gap-2">
+              <span className="text-xs text-surface-500">FAQ (Tez orada)</span>
+              <span className="text-xs text-surface-500">Maxfiylik siyosati</span>
+              <span className="text-xs text-surface-500">Foydalanish shartlari</span>
+            </div>
           </div>
         </div>
-        <div className="border-t border-surface-800 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-surface-500">&copy; {new Date().getFullYear()} {APP_NAME}. Barcha huquqlar himoyalangan.</p>
-          <p className="text-xs text-surface-500">O&apos;zbekistonda yaratilgan</p>
+        <div className="border-t border-surface-800 pt-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-[11px] text-surface-500">&copy; {new Date().getFullYear()} {APP_NAME}. Barcha huquqlar himoyalangan.</p>
+          <p className="text-[11px] text-surface-600">O&apos;zbekistonda yaratilgan</p>
         </div>
       </div>
     </footer>
