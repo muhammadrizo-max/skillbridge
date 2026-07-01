@@ -1,5 +1,8 @@
 import { User, Skill, TeachingSkill, LearningSkill, MatchResult, Connection, Message, ChatConversation, Rating, Report, Notification, AdminStats } from './types'
 
+// Re-exports from constants
+export { APP_NAME, APP_DESCRIPTION, ROUTES, SKILL_CATEGORIES, SKILL_LEVELS, CITIES, LANGUAGES, REPORT_REASONS } from './constants'
+
 // ============ USERS ============
 export const mockUsers: User[] = [
   { id:'1', fullName:'Aziz Karimov', username:'aziz_dev', email:'aziz@example.com', avatar:'https://i.pravatar.cc/150?u=aziz', bio:"Full-stack dasturchi. 5 yillik tajriba. React va Node.js bo'yicha mutaxassis.", country:"O'zbekiston", city:'Toshkent', languages:["O'zbek",'Rus','Ingliz'], joinDate:'2024-09-15', role:'user', isVerified:true, isSuspended:false, completedSessions:24, rating:4.8, ratingCount:18 },
@@ -7,10 +10,10 @@ export const mockUsers: User[] = [
   { id:'3', fullName:'Jasur Toshmatov', username:'jasur_eng', email:'jasur@example.com', avatar:'https://i.pravatar.cc/150?u=jasur', bio:"Ingliz tili o'qituvchisi. IELTS 8.0. 3 yillik tajriba.", country:"O'zbekiston", city:'Buxoro', languages:["O'zbek",'Ingliz','Turk'], joinDate:'2024-11-10', role:'user', isVerified:true, isSuspended:false, completedSessions:31, rating:4.7, ratingCount:22 },
   { id:'4', fullName:'Malika Usmonova', username:'malika_music', email:'malika@example.com', avatar:'https://i.pravatar.cc/150?u=malika', bio:'Professional pianinochi. Konservatoriya bitiruvchisi.', country:"O'zbekiston", city:'Toshkent', languages:["O'zbek",'Rus'], joinDate:'2024-12-01', role:'user', isVerified:true, isSuspended:false, completedSessions:8, rating:5.0, ratingCount:6 },
   { id:'5', fullName:'Sardor Alimov', username:'sardor_biz', email:'sardor@example.com', avatar:'https://i.pravatar.cc/150?u=sardor', bio:'Tadbirkorlik va marketing bo\'yicha maslahatchi. MBA.', country:"O'zbekiston", city:'Toshkent', languages:["O'zbek",'Rus','Ingliz'], joinDate:'2024-08-20', role:'user', isVerified:true, isSuspended:false, completedSessions:19, rating:4.6, ratingCount:14 },
-  { id:'6', fullName:'Dilnoza Karimova', username:'dilnoza_photo', email:'dilnoza@example.com', avatar:'https://i.pravatar.cc/150?u=dilnoza', bio:'Professional fotograf va videograf. Adobe Lightroom va Premiere Pro.', country:"O'zbekiston", city:"Farg'ona", languages:["O'zbek",'Rus'], joinDate:'2025-01-05', role:'user', isVerified:true, isSuspended:false, completedSessions:5, rating:4.5, ratingCount:4 },
-  { id:'7', fullName:'Otabek Nazarov', username:'otabek_math', email:'otabek@example.com', avatar:'https://i.pravatar.cc/150?u=otabek', bio:"Matematika o'qituvchisi. Olimpiada tayyorlash bo'yicha tajriba.", country:"O'zbekiston", city:'Namangan', languages:["O'zbek",'Rus'], joinDate:'2025-02-14', role:'user', isVerified:false, isSuspended:false, completedSessions:12, rating:4.4, ratingCount:8 },
-  { id:'8', fullName:'Zilola Mirzoeva', username:'zilola_cook', email:'zilola@example.com', avatar:'https://i.pravatar.cc/150?u=zilola', bio:"Oshpazlik san'ati. Milliy va evropa taomlari bo'yicha ustoz.", country:"O'zbekiston", city:'Toshkent', languages:["O'zbek",'Rus','Turk'], joinDate:'2025-03-01', role:'user', isVerified:true, isSuspended:false, completedSessions:7, rating:4.9, ratingCount:5 },
-  { id:'admin1', fullName:'Admin Foydalanuvchi', username:'admin', email:'admin@skillbridge.uz', avatar:'https://i.pravatar.cc/150?u=admin', bio:'SkillBridge platformasi administratori.', country:"O'zbekiston", city:'Toshkent', languages:["O'zbek",'Rus','Ingliz'], joinDate:'2024-01-01', role:'admin', isVerified:true, isSuspended:false, completedSessions:0, rating:0, ratingCount:0 },
+  { id:'6', fullName:'Dilnoza Karimova', username:'dilnoza_photo', email:'dilnoza@example.com', avatar:'https://i.pravatar.cc/150?u=dilnoza', bio:'Professional fotograf va videograf.', country:"O'zbekiston", city:"Farg'ona", languages:["O'zbek",'Rus'], joinDate:'2025-01-05', role:'user', isVerified:true, isSuspended:false, completedSessions:5, rating:4.5, ratingCount:4 },
+  { id:'7', fullName:'Otabek Nazarov', username:'otabek_math', email:'otabek@example.com', avatar:'https://i.pravatar.cc/150?u=otabek', bio:"Matematika o'qituvchisi.", country:"O'zbekiston", city:'Namangan', languages:["O'zbek",'Rus'], joinDate:'2025-02-14', role:'user', isVerified:false, isSuspended:false, completedSessions:12, rating:4.4, ratingCount:8 },
+  { id:'8', fullName:'Zilola Mirzoeva', username:'zilola_cook', email:'zilola@example.com', avatar:'https://i.pravatar.cc/150?u=zilola', bio:"Oshpazlik san'ati.", country:"O'zbekiston", city:'Toshkent', languages:["O'zbek",'Rus','Turk'], joinDate:'2025-03-01', role:'user', isVerified:true, isSuspended:false, completedSessions:7, rating:4.9, ratingCount:5 },
+  { id:'admin1', fullName:'Admin Foydalanuvchi', username:'admin', email:'admin@skillbridge.uz', avatar:'https://i.pravatar.cc/150?u=admin', bio:'SkillBridge administratori.', country:"O'zbekiston", city:'Toshkent', languages:["O'zbek",'Rus','Ingliz'], joinDate:'2024-01-01', role:'admin', isVerified:true, isSuspended:false, completedSessions:0, rating:0, ratingCount:0 },
 ]
 export const currentUser: User = mockUsers[0]
 
@@ -30,7 +33,7 @@ export const allSkills: Skill[] = [
   { id:'s23', name:'Fizika', category:"Ta'lim" }, { id:'s24', name:'Biologiya', category:"Ta'lim" },
   { id:'s25', name:'Fotografiya', category:'Dizayn' }, { id:'s26', name:'Video Montaj', category:'Dizayn' },
   { id:'s27', name:'Yoga', category:"Sog'liq" }, { id:'s28', name:'Fitness', category:'Sport' },
-  { id:'s29', name:'Shaxmat', category:'Sport' }, { id:'s30', name:"Oshpazlik", category:"Ta'" },
+  { id:'s29', name:'Shaxmat', category:'Sport' }, { id:'s30', name:'Oshpazlik', category:"Ta'lim" },
 ]
 
 export const mockTeachingSkills: TeachingSkill[] = [
@@ -59,11 +62,11 @@ export const mockMessages: Message[] = [
   { id:'m1', connectionId:'c1', senderId:'2', content:"Assalomu alaykum! React bo'yicha savolim bor edi.", type:'text', timestamp:'2025-06-28T10:30:00Z', isRead:true },
   { id:'m2', connectionId:'c1', senderId:'1', content:"Va alaykum assalom! Albatta, qanday savol?", type:'text', timestamp:'2025-06-28T10:32:00Z', isRead:true },
   { id:'m3', connectionId:'c1', senderId:'2', content:"useEffect hook qanday ishlaydi?", type:'text', timestamp:'2025-06-28T10:35:00Z', isRead:true },
-  { id:'m4', connectionId:'c1', senderId:'1', content:"useEffect — React hook bo'lib, component mount bo'lganda side effectlarni bajarish uchun ishlatiladi.", type:'text', timestamp:'2025-06-28T10:40:00Z', isRead:true },
+  { id:'m4', connectionId:'c1', senderId:'1', content:"useEffect — React hook bo'lib, side effectlarni bajarish uchun ishlatiladi.", type:'text', timestamp:'2025-06-28T10:40:00Z', isRead:true },
   { id:'m5', connectionId:'c1', senderId:'2', content:"Tushunarli! Rahmat katta", type:'text', timestamp:'2025-06-28T10:42:00Z', isRead:false },
   { id:'m6', connectionId:'c2', senderId:'3', content:"Salom! Ingliz tili darslari haqida gaplashmoqchi edim.", type:'text', timestamp:'2025-06-29T14:00:00Z', isRead:true },
   { id:'m7', connectionId:'c2', senderId:'1', content:"Salom Jasur! Qachon boshlashimiz mumkin?", type:'text', timestamp:'2025-06-29T14:05:00Z', isRead:true },
-  { id:'m8', connectionId:'c2', senderId:'3', content:"Keyingi haftadan boshlasak bo'ladimi? Har seshanba va payshanba.", type:'text', timestamp:'2025-06-29T14:10:00Z', isRead:false },
+  { id:'m8', connectionId:'c2', senderId:'3', content:"Keyingi haftadan boshlasak bo'ladimi?", type:'text', timestamp:'2025-06-29T14:10:00Z', isRead:false },
 ]
 
 export const mockConversations: ChatConversation[] = [
@@ -73,27 +76,27 @@ export const mockConversations: ChatConversation[] = [
 
 // ============ RATINGS ============
 export const mockRatings: Rating[] = [
-  { id:'r1', sessionId:'sess1', raterId:'2', ratedId:'1', score:5, review:"Ajoyib o'qituvchi! React bo'yicha hamma narsani tushunarli tushuntirdi.", createdAt:'2025-06-21T16:00:00Z', rater:mockUsers[1], rated:mockUsers[0] },
-  { id:'r2', sessionId:'sess2', raterId:'3', ratedId:'1', score:4, review:"Yaxshi dars. JavaScript bo'yicha foydali maslahatlar berdi.", createdAt:'2025-06-26T18:00:00Z', rater:mockUsers[2], rated:mockUsers[0] },
-  { id:'r3', sessionId:'sess3', raterId:'1', ratedId:'2', score:5, review:"Nilufar dizayn bo'yicha juda bilimli. Figma ni professional o'rgatdi.", createdAt:'2025-06-22T15:00:00Z', rater:mockUsers[0], rated:mockUsers[1] },
-  { id:'r4', sessionId:'sess4', raterId:'1', ratedId:'3', score:5, review:"Jasurning ingliz tili darslari juda samarali. IELTS tayyorlashda yordam berdi.", createdAt:'2025-06-27T19:00:00Z', rater:mockUsers[0], rated:mockUsers[2] },
-  { id:'r5', sessionId:'sess5', raterId:'5', ratedId:'4', score:5, review:"Malikaning pianino darslari ajoyib! Sabrli va tajribali.", createdAt:'2025-06-28T17:00:00Z', rater:mockUsers[4], rated:mockUsers[3] },
+  { id:'r1', sessionId:'sess1', raterId:'2', ratedId:'1', score:5, review:"Ajoyib o'qituvchi!", createdAt:'2025-06-21T16:00:00Z', rater:mockUsers[1], rated:mockUsers[0] },
+  { id:'r2', sessionId:'sess2', raterId:'3', ratedId:'1', score:4, review:"Yaxshi dars.", createdAt:'2025-06-26T18:00:00Z', rater:mockUsers[2], rated:mockUsers[0] },
+  { id:'r3', sessionId:'sess3', raterId:'1', ratedId:'2', score:5, review:"Nilufar dizayn bo'yicha bilimli.", createdAt:'2025-06-22T15:00:00Z', rater:mockUsers[0], rated:mockUsers[1] },
+  { id:'r4', sessionId:'sess4', raterId:'1', ratedId:'3', score:5, review:"Jasurning darslari samarali.", createdAt:'2025-06-27T19:00:00Z', rater:mockUsers[0], rated:mockUsers[2] },
+  { id:'r5', sessionId:'sess5', raterId:'5', ratedId:'4', score:5, review:"Malikaning pianino darslari ajoyib!", createdAt:'2025-06-28T17:00:00Z', rater:mockUsers[4], rated:mockUsers[3] },
 ]
 
 // ============ NOTIFICATIONS ============
 export const mockNotifications: Notification[] = [
-  { id:'n1', userId:'1', type:'connection_request', title:"Yangi ulanish so'rovi", message:"Malika Usmonova sizga ulanish so'rovi yubordi", isRead:false, createdAt:'2025-06-29T08:00:00Z', link:'/connections' },
+  { id:'n1', userId:'1', type:'connection_request', title:"Yangi so'rov", message:"Malika Usmonova sizga ulanish so'rovi yubordi", isRead:false, createdAt:'2025-06-29T08:00:00Z', link:'/connections' },
   { id:'n2', userId:'1', type:'new_message', title:'Yangi xabar', message:"Nilufar Rashidova sizga xabar yubordi", isRead:false, createdAt:'2025-06-28T10:42:00Z', link:'/chat/c1' },
-  { id:'n3', userId:'1', type:'new_rating', title:'Yangi baho', message:"Jasur Toshmatov sizga 4 yulduz baho berdi", isRead:true, createdAt:'2025-06-26T18:00:00Z', link:'/ratings' },
-  { id:'n4', userId:'1', type:'connection_accepted', title:"Ulanish qabul qilindi", message:"Jasur Toshmatov ulanish so'rovingizni qabul qildi", isRead:true, createdAt:'2025-06-25T12:00:00Z', link:'/connections' },
-  { id:'n5', userId:'1', type:'connection_request', title:"Yangi ulanish so'rovi", message:"Sardor Alimov sizga ulanish so'rovi yubordi", isRead:false, createdAt:'2025-06-30T10:00:00Z', link:'/connections' },
+  { id:'n3', userId:'1', type:'new_rating', title:'Yangi baho', message:"Jasur sizga 4 yulduz baho berdi", isRead:true, createdAt:'2025-06-26T18:00:00Z', link:'/ratings' },
+  { id:'n4', userId:'1', type:'connection_accepted', title:"Qabul qilindi", message:"Jasur ulanishni qabul qildi", isRead:true, createdAt:'2025-06-25T12:00:00Z', link:'/connections' },
+  { id:'n5', userId:'1', type:'connection_request', title:"Yangi so'rov", message:"Sardor Alimov sizga so'rov yubordi", isRead:false, createdAt:'2025-06-30T10:00:00Z', link:'/connections' },
 ]
 
 // ============ REPORTS ============
 export const mockReports: Report[] = [
-  { id:'rep1', reporterId:'3', reportedId:'5', reason:'Spam', description:"Foydalanuvchi reklama xabarlarini ko'p yuboryapti.", status:"ko'rib chiqilmoqda", createdAt:'2025-06-28T12:00:00Z', reporter:mockUsers[2], reported:mockUsers[4] },
-  { id:'rep2', reporterId:'2', reportedId:'7', reason:'Soxta profil', description:"Profil ma'lumotlari haqiqiy emasdek.", status:"ko'rib chiqilmoqda", createdAt:'2025-06-29T09:00:00Z', reporter:mockUsers[1], reported:mockUsers[6] },
-  { id:'rep3', reporterId:'4', reportedId:'6', reason:'Xulq-atvor muammosi', description:"Noto'g'ri so'zlar ishlatmoqda.", status:'hal qilindi', createdAt:'2025-06-25T15:00:00Z', reporter:mockUsers[3], reported:mockUsers[5] },
+  { id:'rep1', reporterId:'3', reportedId:'5', reason:'Spam', description:"Reklama xabarlarini ko'p yuboryapti.", status:"ko'rib chiqilmoqda", createdAt:'2025-06-28T12:00:00Z', reporter:mockUsers[2], reported:mockUsers[4] },
+  { id:'rep2', reporterId:'2', reportedId:'7', reason:'Soxta profil', description:"Profil haqiqiy emasdek.", status:"ko'rib chiqilmoqda", createdAt:'2025-06-29T09:00:00Z', reporter:mockUsers[1], reported:mockUsers[6] },
+  { id:'rep3', reporterId:'4', reportedId:'6', reason:'Xulq-atvor muammosi', description:"Noto'g'ri so'zlar.", status:'hal qilindi', createdAt:'2025-06-25T15:00:00Z', reporter:mockUsers[3], reported:mockUsers[5] },
 ]
 
 // ============ ADMIN STATS ============
