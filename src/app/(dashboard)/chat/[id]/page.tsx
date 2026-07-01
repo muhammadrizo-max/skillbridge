@@ -21,7 +21,14 @@ export default function ChatRoomPage() {
   useEffect(() => { (async () => { setMessages(await chatService.getMessages(params.id as string)); setLoading(false) })() }, [params.id])
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [messages])
 
-  const handleSend = async () => { if (!input.trim() || sending) return; setSending(true); setMessages((p) => [...p, await chatService.sendMessage(params.id as string, input.trim())]); setInput(''); setSending(false) }
+  const handleSend = async () => {
+    if (!input.trim() || sending) return
+    setSending(true)
+    const msg = await chatService.sendMessage(params.id as string, input.trim())
+    setMessages((p) => [...p, msg])
+    setInput('')
+    setSending(false)
+  }
 
   if (loading) return <LoadingSpinner size="lg" className="py-32" />
 
