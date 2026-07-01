@@ -15,7 +15,13 @@ export default function AdminSkillsPage() {
   const [cat, setCat] = useState('')
   useEffect(() => { (async () => { setSkills(await adminService.getSkills()); setLoading(false) })() }, [])
 
-  const add = async () => { if (!name || !cat) return; setSkills((p) => [...p, await adminService.addSkill({ name, category: cat as Skill['category'] })]); setName(''); setCat('') }
+  const add = async () => {
+    if (!name || !cat) return
+    const skill = await adminService.addSkill({ name, category: cat as Skill['category'] })
+    setSkills((p) => [...p, skill])
+    setName('')
+    setCat('')
+  }
   const remove = async (id: string) => { await adminService.deleteSkill(id); setSkills((p) => p.filter((s) => s.id !== id)) }
   const filtered = skills.filter((s) => s.name.toLowerCase().includes(q.toLowerCase()) || s.category.toLowerCase().includes(q.toLowerCase()))
 
