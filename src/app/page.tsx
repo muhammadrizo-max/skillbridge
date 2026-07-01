@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Users, BookOpen, Search, MessageCircle, Star, ArrowRight, Shield, Globe, Sparkles } from 'lucide-react'
 import { Button, Badge } from '@/components/ui'
 import { Navbar, Footer } from '@/components/layouts'
-import { APP_NAME, ROUTES } from '@/lib/constants'
+import { APP_NAME, APP_DESCRIPTION, ROUTES } from '@/lib/constants'
 
 const features = [
   { icon: Search, title: 'Aqlli qidiruv', description: "Ko'nikmalar, tillar va joylashuv bo'yicha eng mos o'qituvchi yoki o'quvchini toping." },
