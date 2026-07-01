@@ -1,12 +1,13 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import { APP_NAME, APP_DESCRIPTION } from '@/lib/constants'
+'use client'
+import { ReactNode } from 'react'
+import { usePathname } from 'next/navigation'
+import { AdminPanelLayout } from '@/components/layouts'
+import { ToastContainer } from '@/components/ui'
 
-export const metadata: Metadata = {
-  title: { default: APP_NAME, template: `%s | ${APP_NAME}` },
-  description: APP_DESCRIPTION,
-}
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="uz"><body>{children}</body></html>
+export default function AdminPagesLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname()
+  if (pathname === '/admin/login') {
+    return <>{children}<ToastContainer /></>
+  }
+  return <AdminPanelLayout>{children}</AdminPanelLayout>
 }
